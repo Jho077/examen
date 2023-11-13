@@ -7,6 +7,9 @@
  include "../src/config.php";
  include "../src/controllers/ctrlIndex.php";
  include "../src/controllers/ctrlJson.php";
+ include "../src/controllers/ctrlForm.php";
+ include "../src/controllers/ctrlDoRegistre.php";
+ include "../src/controllers/ctrlNext.php";
 
 /**
   * Carreguem les classes del Framework Emeset
@@ -20,7 +23,7 @@
  $response = new \Emeset\Response();
  $container = new \Emeset\Container($config);
 
- /* 
+ /*   
   * Aquesta és la part que fa que funcioni el Front Controller.
   * Si no hi ha cap paràmetre, carreguem la pàgina d'inici.
   * Si hi ha paràmetre, carreguem la pàgina que correspongui.
@@ -36,6 +39,12 @@
      $response = ctrlIndex($request, $response, $container);
  } elseif($r == "json") {
   $response = ctrlJson($request, $response, $container);
+} elseif($r == "form") {
+  $response = ctrlForm($request, $response, $container);
+} elseif($r == "registre") {
+  $response = ctrlDoRegistre($request, $response, $container);
+} elseif($r == "next") {
+  $response = ctrlNext($request, $response, $container);
 } else {
      echo "No existeix la ruta";
  }

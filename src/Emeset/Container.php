@@ -42,4 +42,20 @@ class Container
         return new \Emeset\Request();
     }
 
+    public function db(){
+        return new \Alumnes\Db(
+            $this->config["db"]["user"],
+            $this->config["db"]["pass"],
+            $this->config["db"]["db"], 
+            $this->config["db"]["host"]
+        );
+    }
+    public function users()
+    {
+        return new \Alumnes\Users($this->sql);
+    }
+    //public function registre()
+    //{SS
+    //    return new \Alumnes\Registre($this->sql);
+    //}
 }
